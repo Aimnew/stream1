@@ -10,10 +10,10 @@ def load_data(file_path):
     return df
 
 
-population_data_path = "stream1/Всего.csv"
-salary_data_path = "stream1/ЗП.csv"
-men_data_path = "stream1/Мужчины.csv"
-women_data_path = "stream1/Женщины.csv"
+population_data_path = "Всего.csv"
+salary_data_path = "ЗП.csv"
+men_data_path = "Мужчины.csv"
+women_data_path = "Женщины.csv"
 
 population_df = load_data(population_data_path)
 salary_df = load_data(salary_data_path)
