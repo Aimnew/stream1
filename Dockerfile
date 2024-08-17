@@ -4,7 +4,7 @@ WORKDIR /stream1
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requierements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
