@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import numpy as np
 from pathlib import Path
 
-# Настройка страницы
+# Настройка страницы 
 st.set_page_config(
     page_title="Статистика России",
     page_icon="📊",
