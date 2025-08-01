@@ -61,15 +61,15 @@ jobs:
             echo "🎉 Health check completed successfully!"
             echo "App is awake and ready to serve users."
           else
-                      echo "💔 All attempts failed. App might be experiencing issues."
-          echo "Check your Streamlit app manually: https://rfpopulate.streamlit.app"
+            echo "💔 All attempts failed. App might be experiencing issues."
+            echo "Check your Streamlit app manually: https://rfpopulate.streamlit.app"
 
-          # Попытка перезапуска приложения через API (если доступно)
-          echo "🔄 Attempting to restart application..."
-          # Здесь можно добавить команды для перезапуска через API
-          # curl -X POST https://api.streamlit.io/restart -H "Authorization: Bearer ${{ secrets.STREAMLIT_API_TOKEN }}"
+            # Попытка перезапуска приложения через API (если доступно)
+            echo "🔄 Attempting to restart application..."
+            # Здесь можно добавить команды для перезапуска через API
+            # curl -X POST https://api.streamlit.io/restart -H "Authorization: Bearer ${{ secrets.STREAMLIT_API_TOKEN }}"
 
-          exit 1
+            exit 1
           fi
 
           echo "✨ Health check finished at $(date)"

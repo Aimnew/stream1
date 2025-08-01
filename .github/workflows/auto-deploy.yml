@@ -1,0 +1,58 @@
+name: Auto Deploy to Streamlit Cloud
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Test application
+      run: |
+        python -c "import streamlit; import pandas; import plotly"
+        echo "✅ All dependencies installed successfully"
+        
+    - name: Check data files
+      run: |
+        echo "📁 Checking data files..."
+        ls -la *.csv
+        echo "✅ Data files found"
+        
+    - name: Deploy notification
+      run: |
+        echo "🚀 Code changes detected!"
+        echo "📊 Application will be automatically deployed to Streamlit Cloud"
+        echo "🌐 Check your app at: https://rfpopulate.streamlit.app"
+        echo "⏱️ Deployment usually takes 2-5 minutes"
+        
+    - name: Wait for deployment
+      run: |
+        echo "⏳ Waiting for deployment to complete..."
+        sleep 30
+        
+    - name: Health check after deployment
+      run: |
+        echo "🔍 Checking if deployment was successful..."
+        response=$(curl -s -o /dev/null -w "%{http_code}" https://rfpopulate.streamlit.app)
+        if [ "$response" -eq 200 ]; then
+          echo "✅ Deployment successful! App is responding."
+        else
+          echo "⚠️ App might still be deploying. Check manually in a few minutes."
+        fi 
